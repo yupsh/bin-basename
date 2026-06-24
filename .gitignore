@@ -1,0 +1,6 @@
+/bin-basename
+/yup-basename
+/basename
+/dist
+/bin
+coverage*
