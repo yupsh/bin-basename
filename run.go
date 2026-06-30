@@ -11,6 +11,8 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
+const name = "basename"
+
 const (
 	flagMultiple = "multiple"
 	flagSuffix   = "suffix"
@@ -56,7 +58,7 @@ func run(version string, args []string, _ io.Reader, stdout, stderr io.Writer, _
 	cmd.Writer = stdout
 	cmd.ErrWriter = stderr
 	if err := cmd.Run(context.Background(), args); err != nil {
-		_, _ = fmt.Fprintf(stderr, "basename: %v\n", err)
+		_, _ = fmt.Fprintf(stderr, name+": %v\n", err)
 		return 1
 	}
 	return 0
@@ -64,7 +66,7 @@ func run(version string, args []string, _ io.Reader, stdout, stderr io.Writer, _
 
 func newCommand(version string, stdout io.Writer) *cli.Command {
 	return &cli.Command{
-		Name:            "basename",
+		Name:            name,
 		Version:         version,
 		Usage:           "strip directory and suffix from filenames",
 		UsageText:       usageText,
